@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Terminal de Voo</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div class="painel-unico">
+        <h1>Painel de Controle</h1>
+        <div class="container-aviao">
+            <img src="aviao.png" alt="Avião" id="img-aviao">
+        </div>
+        <div class="status-container">
+            <p><strong>Voo:</strong> <span id="display-codigo">---</span></p>
+            <p><strong>Rota:</strong> <span id="display-origem">---</span> ✈ <span id="display-destino">---</span></p>
+            <p><strong>Altitude:</strong> <span id="display-altitude">0</span> ft</p>
+            <p><strong>Status:</strong> <span id="display-status" class="status-badge">Aguardando</span></p>
+        </div>
+        <div class="botoes">
+            <button onclick="meuVoo.decolar()" class="btn-decolar">Decolar</button>
+            <button onclick="meuVoo.subir()" class="btn-subir">Ganhar Altitude</button>
+            <button onclick="meuVoo.pousar()" class="btn-pousar">Pousar</button>
+        </div>
+    </div>
+    <script src="script.js"></script>
+</body>
+</html>

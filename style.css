@@ -1,0 +1,71 @@
+body {
+    background-color: #1a1a2e;
+    font-family: 'Segoe UI', sans-serif;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    margin: 0;
+    overflow: hidden;
+}
+
+.painel-unico {
+    background-color: #ffffff;
+    padding: 30px;
+    border-radius: 20px;
+    box-shadow: 0 10px 25px rgba(0,0,0,0.3);
+    text-align: center;
+    width: 350px;
+    z-index: 10;
+}
+
+#img-aviao {
+    width: 150px;
+    padding: 10px;
+    border: 5px solid #c0392b;
+    border-radius: 50%;
+    transition: all 0.5s ease;
+}
+
+.borda-voo {
+    border-color: #27ae60 !important;
+}
+
+.decolando {
+    animation: decolarAnim 2s forwards;
+}
+
+@keyframes decolarAnim {
+    0% { transform: translate(0, 0) rotate(0deg); }
+    100% { transform: translate(500px, -200px) rotate(-15deg); opacity: 0; }
+}
+
+.status-badge {
+    padding: 5px 10px;
+    border-radius: 5px;
+    font-weight: bold;
+    color: white;
+    background-color: #7f8c8d;
+}
+
+.botoes {
+    margin-top: 20px;
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+}
+
+button {
+    padding: 12px;
+    border: none;
+    border-radius: 8px;
+    cursor: pointer;
+    font-weight: bold;
+    transition: 0.3s;
+}
+
+.btn-decolar { background-color: #27ae60; color: white; }
+.btn-subir { background-color: #f39c12; color: white; }
+.btn-pousar { background-color: #c0392b; color: white; }
+
+button:hover { filter: brightness(1.2); transform: scale(1.02); }
