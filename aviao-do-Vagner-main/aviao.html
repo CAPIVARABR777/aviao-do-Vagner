@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Terminal de Voo VIP & Carga</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div class="painel-container">
+        <div class="painel-unico">
+            <h1>Jato Executivo</h1>
+            <div class="container-aviao">
+                <img src="aviao.png" alt="Jato" id="img-jato">
+            </div>
+            <div class="status-container">
+                <p><strong>Voo:</strong> <span id="jato-codigo">---</span></p>
+                <p><strong>Status:</strong> <span id="jato-status" class="status-badge">Aguardando</span></p>
+                <p><strong>Altitude:</strong> <span id="jato-altitude">0</span> ft</p>
+                <p><strong>Modo:</strong> <span id="jato-modo">Normal</span></p>
+                <p><strong>Rádio:</strong> <em id="jato-comunicacao">...</em></p>
+            </div>
+            <div class="botoes">
+                <button onclick="meuJato.decolar()" class="btn-decolar">Decolar</button>
+                <button onclick="meuJato.ativarSupersonico()" class="btn-subir">Ativar Supersônico</button>
+                <button onclick="meuJato.desativarSupersonico()" class="btn-pousar">Desativar Supersônico</button>
+                <button onclick="meuJato.pousar()" class="btn-pousar">Pousar</button>
+            </div>
+        </div>
+
+        <div class="painel-unico">
+            <h1>Transporte de Carga</h1>
+            <div class="container-aviao">
+                <img src="aviao.png" alt="Cargueiro" id="img-carga">
+            </div>
+            <div class="status-container">
+                <p><strong>Voo:</strong> <span id="carga-codigo">---</span></p>
+                <p><strong>Carga:</strong> <span id="carga-atual">0</span> / <span id="carga-max">0</span> t</p>
+                <p><strong>Altitude:</strong> <span id="carga-altitude">0</span> ft</p>
+                <p><strong>Status:</strong> <span id="carga-status" class="status-badge">Aguardando</span></p>
+                <p><strong>Rádio:</strong> <em id="carga-comunicacao">...</em></p>
+            </div>
+            <div class="botoes">
+                <input type="number" id="input-toneladas" placeholder="Toneladas">
+                <button onclick="prepararEmbarque()" class="btn-subir">Embarcar Carga</button>
+                <button onclick="meuCargueiro.decolar()" class="btn-decolar">Decolar</button>
+                <button onclick="meuCargueiro.pousar()" class="btn-pousar">Pousar</button>
+            </div>
+        </div>
+    </div>
+    <script src="script.js"></script>
+</body>
+</html>

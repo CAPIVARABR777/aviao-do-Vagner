@@ -1,0 +1,81 @@
+body {
+    background-color: #1a1a2e;
+    font-family: 'Segoe UI', sans-serif;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+    margin: 0;
+}
+
+.painel-container {
+    display: flex;
+    gap: 20px;
+    flex-wrap: wrap;
+    justify-content: center;
+}
+
+.painel-unico {
+    background-color: #ffffff;
+    padding: 20px;
+    border-radius: 20px;
+    box-shadow: 0 10px 25px rgba(0,0,0,0.3);
+    text-align: center;
+    width: 320px;
+}
+
+#img-jato, #img-carga {
+    width: 120px;
+    padding: 10px;
+    border: 5px solid #c0392b;
+    border-radius: 50%;
+    transition: all 0.5s ease;
+}
+
+.borda-voo {
+    border-color: #27ae60 !important;
+}
+
+.decolando {
+    animation: decolarAnim 3s infinite alternate;
+}
+
+@keyframes decolarAnim {
+    0% { transform: translateY(0); }
+    100% { transform: translateY(-20px) rotate(-5deg); }
+}
+
+.status-badge {
+    padding: 3px 8px;
+    border-radius: 5px;
+    font-weight: bold;
+    color: white;
+}
+
+.botoes {
+    margin-top: 15px;
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+}
+
+input {
+    padding: 10px;
+    border-radius: 8px;
+    border: 1px solid #ddd;
+}
+
+button {
+    padding: 10px;
+    border: none;
+    border-radius: 8px;
+    cursor: pointer;
+    font-weight: bold;
+    transition: 0.3s;
+}
+
+.btn-decolar { background-color: #27ae60; color: white; }
+.btn-subir { background-color: #f39c12; color: white; }
+.btn-pousar { background-color: #c0392b; color: white; }
+
+button:hover { filter: brightness(1.1); transform: scale(1.02); }
