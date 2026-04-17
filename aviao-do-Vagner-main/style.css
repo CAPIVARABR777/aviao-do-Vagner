@@ -50,6 +50,7 @@ body {
     border-radius: 5px;
     font-weight: bold;
     color: white;
+    background-color: #7f8c8d;
 }
 
 .botoes {
@@ -79,3 +80,8 @@ button {
 .btn-pousar { background-color: #c0392b; color: white; }
 
 button:hover { filter: brightness(1.1); transform: scale(1.02); }
+
+#jato-comunicacao, #carga-comunicacao {
+    font-weight: bold;
+    color: #2c3e50;
+}

@@ -1,4 +1,6 @@
 class Voo {
+    #combustivel = 100;
+
     constructor(codigo, origem, destino) {
         this.codigo = codigo;
         this.origem = origem;
@@ -7,14 +9,43 @@ class Voo {
         this.status = "No Solo";
     }
 
+    get lerCombustivel() {
+        return this.#combustivel;
+    }
+
+    set abastecer(quantidade) {
+        if (quantidade < 0) {
+            console.log("Erro");
+        } else if (this.#combustivel + quantidade > 100) {
+            this.#combustivel = 100;
+        } else {
+            this.#combustivel += quantidade;
+        }
+        this.atualizarInterface();
+    }
+
+    gastarCombustivel(valor) {
+        if (this.#combustivel - valor < 0) {
+            this.#combustivel = 0;
+            this.pousar();
+        } else {
+            this.#combustivel -= valor;
+        }
+        this.atualizarInterface();
+    }
+
     comunicarTorre() {
-        return `Torre, aqui é o voo ${this.codigo} solicitando instruções.`;
+        return `Torre, voo ${this.codigo}. Combustível: ${this.#combustivel}%`;
     }
 
     decolar() {
-        this.status = "Em Voo";
-        this.altitude = 500;
-        this.atualizarInterface();
+        if (this.#combustivel > 10) {
+            this.status = "Em Voo";
+            this.altitude = 500;
+            this.atualizarInterface();
+        } else {
+            alert("Combustível insuficiente!");
+        }
     }
 
     pousar() {
@@ -23,9 +54,7 @@ class Voo {
         this.atualizarInterface();
     }
 
-    atualizarInterface() {
-        
-    }
+    atualizarInterface() {}
 }
 
 class JatoExecutivo extends Voo {
@@ -34,15 +63,11 @@ class JatoExecutivo extends Voo {
         this.modoSupersonico = false;
     }
 
-    comunicarTorre() {
-        return `Torre, voo VIP ${this.codigo} na escuta, prioridade de pouso.`;
-    }
-
     ativarSupersonico() {
         if (this.status === "Em Voo") {
             this.modoSupersonico = true;
             this.altitude += 20000;
-            this.atualizarInterface();
+            this.gastarCombustivel(20);
         } else {
             alert("Decole primeiro!");
         }
@@ -62,14 +87,10 @@ class JatoExecutivo extends Voo {
         document.getElementById('jato-comunicacao').innerText = this.comunicarTorre();
         
         const img = document.getElementById('img-jato');
-        const badge = document.getElementById('jato-status');
-        
         if (this.status === "Em Voo") {
             img.classList.add('borda-voo', 'decolando');
-            badge.style.backgroundColor = "#27ae60";
         } else {
             img.classList.remove('borda-voo', 'decolando');
-            badge.style.backgroundColor = "#c0392b";
         }
     }
 }
@@ -81,17 +102,12 @@ class VooCarga extends Voo {
         this.cargaAtual = 0;
     }
 
-    comunicarTorre() {
-        return `Torre, cargueiro pesado ${this.codigo} se aproximando.`;
-    }
-
     embarcarCarga(toneladas) {
         if (this.cargaAtual + toneladas <= this.capacidadeMaxima) {
             this.cargaAtual += toneladas;
             this.atualizarInterface();
-            console.log("Carga embarcada com sucesso!");
         } else {
-            alert("Erro: Capacidade máxima excedida!");
+            alert("Erro: Limite excedido!");
         }
     }
 
@@ -104,20 +120,24 @@ class VooCarga extends Voo {
         document.getElementById('carga-comunicacao').innerText = this.comunicarTorre();
 
         const img = document.getElementById('img-carga');
-        const badge = document.getElementById('carga-status');
-
         if (this.status === "Em Voo") {
             img.classList.add('borda-voo', 'decolando');
-            badge.style.backgroundColor = "#27ae60";
         } else {
             img.classList.remove('borda-voo', 'decolando');
-            badge.style.backgroundColor = "#c0392b";
         }
     }
 }
 
 const meuJato = new JatoExecutivo("VIP-01", "Paris", "Dubai");
 const meuCargueiro = new VooCarga("BELUGA-99", "Manaus", "São Paulo", 100);
+
+function gastarJato() { 
+    meuJato.gastarCombustivel(10); 
+}
+
+function abastecerJato() { 
+    meuJato.abastecer = 10; 
+}
 
 function prepararEmbarque() {
     const tons = parseFloat(document.getElementById('input-toneladas').value);
